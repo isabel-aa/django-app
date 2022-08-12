@@ -84,6 +84,9 @@ WSGI_APPLICATION = 'first_proj.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
+    'default': env.db(),
+}
+"""
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
          # Ele diz que tipo de banco de dados vc estara utilizando definiendo o driver a utilizar
@@ -94,9 +97,8 @@ DATABASES = {
         'HOST': '', # A ip ou dominio do servidor de banco de dados.
         'PASSWORD': '', # A senha do banco de dados.
         'USER': '', # O usuario do banco de dados.
-
     },
-}
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
