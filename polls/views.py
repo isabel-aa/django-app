@@ -3,6 +3,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-#VIEW
+# VIEW
+
 def primeira_view(request):
     return HttpResponse('Ola Mundo')
