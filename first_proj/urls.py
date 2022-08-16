@@ -16,7 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# Cadastrar as urls do APP no projeto.
+import polls_2
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('polls.urls')),
+#Definindo um prefix para as urls do app
+    path('poll/', include('polls_2.urls')),
+    path('poll/', include('polls_2.urls'))
 ]

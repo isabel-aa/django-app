@@ -1,7 +1,7 @@
 
 ## Project Structure
 
-````
+```
 ├── manage.py # Arquivo central de Django para interagir com o projecto
 ├── Procfile # el archivo de configuracion de HEROKU
 ├── project # el paquete de python donde vive el proyecto de django
@@ -15,4 +15,4 @@
 
 
 
-````
+```
