@@ -19,7 +19,6 @@ def isabel(request):
     return HttpResponse('<h1>isabel solicitou</h1>')
 
 
-
 # 1. View
 def maria(request):
     name = "bel"
@@ -30,3 +29,23 @@ def maria(request):
     ]
     return render(request=request, template_name='index.html', context={'name': name, 'cores': cores})
 
+
+# render é um shortcut
+from django.template import loader
+from .forms import LoginForm
+# 1 View.
+# DIY: Don't Repeat Yourself
+def maria_two(request):
+    name = "bel"
+    cores = [
+        "azul",
+        "verde",
+        "vermelho",
+    ]
+    form = LoginForm()
+    response = loader.render_to_string(
+        template_name='index.html',
+        context={'name': name, 'cores': cores, 'form': form},
+        request=request,
+    )
+    return HttpResponse(response)
