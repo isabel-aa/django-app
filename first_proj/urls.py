@@ -24,5 +24,7 @@ urlpatterns = [
     path('', include('polls.urls')),
 #Definindo um prefix para as urls do app
     path('poll/', include('polls_2.urls')),
-    path('poll/', include('polls_2.urls'))
+    path('poll/', include('polls_2.urls')),
+    path ('poll/', include('polls_2.urls'))
+
 ]

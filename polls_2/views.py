@@ -1,5 +1,6 @@
+from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 # Create your views here.
@@ -7,7 +8,7 @@ from django.shortcuts import render
 
 # View: Funcoes
 # signature: (request: Object) -> HttpResponse
-#from django.urls import reverse, reverse_lazy
+from django.urls import reverse, reverse_lazy
 
 
 def index(request):
@@ -49,3 +50,25 @@ def maria_two(request):
         request=request,
     )
     return HttpResponse(response)
+
+# 1. View
+# 1. Importamos ele
+from .forms import Conversor, CategoryForm
+def conversor(request):
+    # Preciso criar uma instancia do formulario
+    # Como acessar as informacoes do formulario enviadas na request.
+    if request.method == 'POST':
+        form = Conversor(request.POST)
+        if form.is_valid():
+            print("OS DADOS SAO VALIDOS!!!")
+    else:
+        form = CategoryForm()
+    print("[FUNCTION] ENTROU AQUI NA VIEW!!!")
+    return render(
+        request=request,
+        template_name='polls_2/conversor.html',
+        context={
+            'form': form,
+        }
+    )
+
