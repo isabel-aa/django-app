@@ -72,3 +72,39 @@ def conversor(request):
         }
     )
 
+# 1. CBV [Class-Based Views] - Organizacao do codigo melhorando a legibilidade.
+# 2. Caracteristica do POO a reusabilidade de codigo.
+# 3. Caracteristica do POO Herencia
+## 1. Define a View - Clase
+
+from django.views import View
+
+class PrimeiraCBView(View):
+    template = 'polls_2/conversor.html'
+
+    def __render(self, context, request):
+        return render(
+            request=request,
+            template_name=self.template,
+            context=context
+        )
+
+    def post(self, request):
+        form = Conversor(request.POST)
+        if form.is_valid():
+            print("OS DADOS SAO VALIDOS!!!")
+        return self.__render(
+            request=request,
+            context={'form': form}
+        )
+
+    def get(self, request):
+        print("[CLASS] ENTROU AQUI NA VIEW!!!")
+        form = Conversor()
+        return self.__render(
+            request=request,
+            context={'form': form}
+        )
+
+class SegundoConversor(PrimeiraCBView):
+    template = 'polls_2/conversor_2.html'
