@@ -127,3 +127,41 @@ class ConversorSuperPower(FormView):
     form_class = Conversor
     template_name = 'polls_2/conversor.html'
 
+from .models import Category
+
+
+from django.views.generic import ListView, CreateView, DetailView
+
+from .models import Category
+
+def lista_categorias(request):
+    categorias = Category.objects.all()
+    return render(
+        request=request,
+        template_name='polls_2/lista_categorias.html',
+        context={
+            'categorias': categorias,
+        }
+
+    )
+
+
+
+def create_categoria(request):
+    from .forms import CategoryForm # utiliza o formulario import
+    if request.method == 'POST': # SE o metodo da request for POST vai validar os dados do usuario e depois criar o formulario abaixo
+        form = CategoryForm(request.POST) # Criar um formulario com os dados que eu mandei do post
+        if form.is_valid(): #  se encarrega de validar os dados as informações
+            form.save() # ele cria um no banco de dados e deixa salvo na tela as informações
+            print ("DADOS VALIDADOS!!!") # imprimir na tela
+
+    else:
+
+        form = CategoryForm()
+    return render(  #renderiza o template com o formulario
+        request=request,
+        template_name='polls_2/create_categoria.html', #nome do template
+        context={'form': form},
+
+
+    )

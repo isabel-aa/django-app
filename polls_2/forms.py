@@ -26,7 +26,7 @@ class Conversor(forms.Form):
 
 from .models import Category
 
-class CategoryForm(forms.ModelForm):
+class CategoryForm(forms.ModelForm): # utiliza tudo que esta no modelo para fazer validações por default
     class Meta:
         model = Category
         fields = '__all__'
