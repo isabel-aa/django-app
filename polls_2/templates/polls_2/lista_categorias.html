@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<htmlii lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>CATEGORIAS</title>
@@ -13,7 +13,8 @@
 <hr>
 <ul>
     {% for categoria in categorias %}
-        <li>{{ categoria }}</li>
+        <li><a href="{% url 'detail_categoria' id=categoria.category_id %}"> {{ categoria.name }} </a></li>
+
     {% endfor %}
 
 </ul>

@@ -145,8 +145,6 @@ def lista_categorias(request):
 
     )
 
-
-
 def create_categoria(request):
     from .forms import CategoryForm # utiliza o formulario import
     if request.method == 'POST': # SE o metodo da request for POST vai validar os dados do usuario e depois criar o formulario abaixo
@@ -165,3 +163,12 @@ def create_categoria(request):
 
 
     )
+def detail_categoria(request, id):
+    categoria = Category.objects.get(category_id=id)
+    return render(
+        request=request,
+        template_name='polls_2/detail_categoria.html',
+        context={'categoria': categoria},
+
+    )
+
