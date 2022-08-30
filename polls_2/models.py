@@ -19,6 +19,7 @@ class Category(models.Model):
     # [E utilizada pelo sistema de migracoes para aplicar cambios no banco de dados.
     # Criar registros em forma de instancias da clase
     # A possibilidade de fazer CONSULTAS no banco de dados usando um MANAGER (.objects)
+    objects = None
     category_id = models.IntegerField(primary_key=True, null=False)
     name = models.CharField(max_length=200)
     nota = models.TextField()
@@ -33,3 +34,4 @@ CREATE TABLE category
 category_id INT PRIMARY KEY
 name varchar(200)
 """
+
